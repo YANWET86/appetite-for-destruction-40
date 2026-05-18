@@ -49,21 +49,27 @@
   let lenisInstance = null;
 
   function initLenis() {
-    if (PREFERS_REDUCED || typeof Lenis === 'undefined') return;
+    if (PREFERS_REDUCED) return;
 
-    lenisInstance = new Lenis({
-      duration: 1.1,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 1.5,
-    });
-
-    function raf(time) {
-      lenisInstance.raf(time);
-      requestAnimationFrame(raf);
+    // Если Lenis не загрузился (медленный CDN, блокировка) — оставляем нативный скролл
+    if (typeof Lenis === 'undefined') {
+      console.warn('[script.js] Lenis недоступен — используется нативный скролл');
+      return;
     }
-    requestAnimationFrame(raf);
+
+    try {
+      lenisInstance = new Lenis({
+        duration: 1.1,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smoothWheel: true,
+        wheelMultiplier: 1,
+        touchMultiplier: 1.5,
+      });
+    } catch (err) {
+      console.warn('[script.js] Не удалось инициализировать Lenis:', err);
+      lenisInstance = null;
+      return;
+    }
 
     // Якорные ссылки через Lenis
     document.querySelectorAll('a[href^="#"]').forEach(link => {
@@ -78,11 +84,18 @@
       });
     });
 
-    // Связь с ScrollTrigger
-    if (typeof ScrollTrigger !== 'undefined') {
+    // Один RAF-цикл: либо через GSAP ticker (если есть), либо через requestAnimationFrame.
+    // Двойной запуск приводит к фризу скролла.
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
       lenisInstance.on('scroll', ScrollTrigger.update);
       gsap.ticker.add((time) => lenisInstance.raf(time * 1000));
       gsap.ticker.lagSmoothing(0);
+    } else {
+      function raf(time) {
+        lenisInstance.raf(time);
+        requestAnimationFrame(raf);
+      }
+      requestAnimationFrame(raf);
     }
   }
 
@@ -448,6 +461,11 @@
     if (typeof gsap !== 'undefined') {
       if (typeof ScrollTrigger !== 'undefined') gsap.registerPlugin(ScrollTrigger);
       if (typeof SplitText !== 'undefined') gsap.registerPlugin(SplitText);
+    }
+
+    // Нативный fallback для якорных ссылок, если Lenis не подхватит
+    if (typeof Lenis === 'undefined') {
+      document.documentElement.style.scrollBehavior = 'smooth';
     }
 
     initLenis();

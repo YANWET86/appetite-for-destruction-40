@@ -75,7 +75,6 @@
 *, *::before, *::after { box-sizing: border-box; }
 
 html {
-  scroll-behavior: smooth; /* fallback если Lenis не загрузится */
   -webkit-text-size-adjust: 100%;
 }
 
