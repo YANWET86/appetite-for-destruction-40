@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Юбилейный коллекционный бокс-сет Guns N' Roses Appetite for Destruction — 40 лет легенде. 5000 нумерованных экземпляров. Предзаказ от лейбла Black Frost Records.">
+  <meta name="theme-color" content="#0a0604">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Appetite for Destruction — 40th Anniversary Box Set">
+  <meta property="og:description" content="40 лет легенде. 5000 коллекционных боксов в мире. Винил 180g, артбук, литография, NFC-чип с неизданным треком.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1461360370896-922624d12aa1?w=1200&q=80">
+  <meta property="og:locale" content="ru_RU">
+
+  <title>Appetite for Destruction 40 — Black Frost Records</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;500;600&family=Special+Elite&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- =========================================================
+       PRELOADER — 1.2 sec film burn-in (CLAUDE.md §6.1)
+       ========================================================= -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader__inner">
+      <div class="preloader__label">Loading Reel</div>
+      <div class="preloader__bar"><span class="preloader__bar-fill"></span></div>
+      <div class="preloader__count" id="preloader-count">000</div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       FILM GRAIN OVERLAY (DESIGN.md §6)
+       ========================================================= -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- =========================================================
+       STICKY HEADER (DESIGN.md §4.4)
+       ========================================================= -->
+  <header class="site-header" id="site-header">
+    <div class="container site-header__row">
+      <a href="#top" class="site-header__logo">
+        <span class="logo-mark">BF</span>
+        <span class="logo-text">Black Frost Records</span>
+      </a>
+      <nav class="site-header__nav" aria-label="Основная навигация">
+        <a href="#product">Бокс-сет</a>
+        <a href="#result">Что внутри</a>
+        <a href="#press">Пресса</a>
+        <a href="#faq">FAQ</a>
+        <a href="#cta" class="btn btn-secondary btn-sm">Предзаказ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- =========================================================
+         SECTION 1 — HERO (CLAUDE.md §5.1)
+         ========================================================= -->
+    <section class="hero" id="hero">
+      <div class="container hero__inner">
+
+        <div class="hero__content">
+          <div class="hero__eyebrow">
+            <span class="dot"></span>
+            <span>Black Frost Records · Limited Pressing 2026</span>
+          </div>
+
+          <h1 class="hero__title" data-split>Welcome to the Jungle. Again.</h1>
+
+          <p class="hero__lead">
+            40 лет легенде. 5000 коллекционных боксов в мире. Один из них — ваш.
+          </p>
+
+          <p class="hero__meta">Релиз — 21 июля 2027. Тираж закрывается раньше.</p>
+
+          <!-- COUNTDOWN (DESIGN.md §4.6 / CLAUDE.md §6.1) -->
+          <div class="countdown" id="countdown" aria-label="Обратный отсчёт до релиза">
+            <div class="countdown__unit">
+              <div class="countdown__flip" data-unit="days"><span>00</span></div>
+              <div class="countdown__label">дней</div>
+            </div>
+            <div class="countdown__sep">:</div>
+            <div class="countdown__unit">
+              <div class="countdown__flip" data-unit="hours"><span>00</span></div>
+              <div class="countdown__label">часов</div>
+            </div>
+            <div class="countdown__sep">:</div>
+            <div class="countdown__unit">
+              <div class="countdown__flip" data-unit="minutes"><span>00</span></div>
+              <div class="countdown__label">минут</div>
+            </div>
+            <div class="countdown__sep">:</div>
+            <div class="countdown__unit">
+              <div class="countdown__flip" data-unit="seconds"><span>00</span></div>
+              <div class="countdown__label">секунд</div>
+            </div>
+          </div>
+
+          <div class="hero__cta-row">
+            <a href="#cta" class="btn btn-primary btn-magnet" data-magnet>Оформить предзаказ — 24 990 ₽</a>
+            <a href="#product" class="btn btn-ghost">Что внутри бокса</a>
+          </div>
+
+          <div class="hero__trust">
+            <span class="trust-stamp">Official Reissue · GN'R Estate Approved</span>
+          </div>
+        </div>
+
+        <div class="hero__visual">
+          <div class="vinyl-stack" data-tilt-hero>
+            <img
+              src="https://images.unsplash.com/photo-1461360370896-922624d12aa1?w=900&q=85&auto=format&fit=crop"
+              alt="Виниловая пластинка крупным планом"
+              class="vinyl-stack__img"
+              loading="eager"
+              fetchpriority="high">
+            <div class="vinyl-stack__sticker">
+              <span class="vinyl-stack__sticker-line1">40</span>
+              <span class="vinyl-stack__sticker-line2">years</span>
+            </div>
+          </div>
+          <div class="hero__caption">Photo: black vinyl, master tape transfer, 180g pressing</div>
+        </div>
+
+      </div>
+
+      <div class="hero__scroll" aria-hidden="true">
+        <span>scroll</span>
+        <span class="hero__scroll-line"></span>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SECTION 2 — РАССКАЗ О ПРОДУКТЕ (CLAUDE.md §5.2)
+         ========================================================= -->
+    <section class="section section--product" id="product">
+      <div class="container">
+
+        <header class="section-head" data-reveal>
+          <div class="section-head__num">01</div>
+          <h2 class="section-head__title">Что лежит в боксе</h2>
+          <p class="section-head__lead">
+            Шесть артефактов в чёрной льняной коробке с тиснёным золотом тиражным номером.
+            Каждый — переиздан или впервые собран к юбилею.
+          </p>
+        </header>
+
+        <div class="product-grid">
+
+          <article class="product-card" data-tilt data-reveal>
+            <div class="product-card__num">I</div>
+            <h3 class="product-card__title">Винил 180g, ремастер 2026</h3>
+            <p class="product-card__text">
+              Перенос с оригинальных мастер-плёнок Geffen 1987 года. Половинная скорость нарезки на лаках, прессовка в RTI (Калифорния). Конверт — оригинальная обложка Robert Williams без цензурной правки 1988-го.
+            </p>
+            <span class="product-card__meta">2 LP · 33⅓ RPM · gatefold</span>
+          </article>
+
+          <article class="product-card" data-tilt data-reveal>
+            <div class="product-card__num">II</div>
+            <h3 class="product-card__title">Артбук, 120 страниц</h3>
+            <p class="product-card__text">
+              Архивные снимки Marc Canter, рукописные тексты Axl с черновиков, сессионные ноты Slash. Тираж напечатан в Италии, переплёт нитью, плотная мелованная бумага.
+            </p>
+            <span class="product-card__meta">240×300 mm · твёрдый переплёт</span>
+          </article>
+
+          <article class="product-card" data-tilt data-reveal>
+            <div class="product-card__num">III</div>
+            <h3 class="product-card__title">Литография Robert Williams</h3>
+            <p class="product-card__text">
+              Цензурированная в 1988-м обложка «Appetite for Destruction», авторская печать художником в 2026 году. Подписана и нумерована — тираж совпадает с тиражом бокса.
+            </p>
+            <span class="product-card__meta">A3 · хлопковая бумага 310 г/м²</span>
+          </article>
+
+          <article class="product-card" data-tilt data-reveal>
+            <div class="product-card__num">IV</div>
+            <h3 class="product-card__title">Реплика билета Whisky a Go Go, 1987</h3>
+            <p class="product-card__text">
+              Точная репродукция входного билета на концерт 28 марта 1987 года. Напечатана на оригинальной картоне той же типографии, что и подлинник. В рамке-passe-partout.
+            </p>
+            <span class="product-card__meta">85×54 mm · passe-partout 200×150 mm</span>
+          </article>
+
+          <article class="product-card" data-tilt data-reveal>
+            <div class="product-card__num">V</div>
+            <h3 class="product-card__title">Сертификат подлинности</h3>
+            <p class="product-card__text">
+              Документ с гербовой печатью Black Frost Records и подписью представителя GN'R Estate. Уникальный номер от 0001 до 5000 совпадает с номером на бокс-сете и литографии.
+            </p>
+            <span class="product-card__meta">Печать гильоширования · UV-маркировка</span>
+          </article>
+
+          <article class="product-card" data-tilt data-reveal>
+            <div class="product-card__num">VI</div>
+            <h3 class="product-card__title">NFC-чип со скрытым треком</h3>
+            <p class="product-card__text">
+              Прикоснитесь телефоном — откроется страница с неизданным студийным дублем «Welcome to the Jungle» (take 04, 1986). Записан только для держателей бокса. Без публикации на стримингах.
+            </p>
+            <span class="product-card__meta">NTAG216 · аутентификация по серийнику</span>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SECTION 3 — РЕЗУЛЬТАТ / ВЫГОДЫ (CLAUDE.md §5.3)
+         ========================================================= -->
+    <section class="section section--result" id="result">
+      <div class="container">
+
+        <header class="section-head" data-reveal>
+          <div class="section-head__num">02</div>
+          <h2 class="section-head__title">Что вы получаете</h2>
+          <p class="section-head__lead">
+            Не покупка пластинки. Вход в закрытый клуб из пяти тысяч имён по всему миру.
+          </p>
+        </header>
+
+        <div class="result-grid">
+
+          <div class="result-card" data-reveal>
+            <svg class="result-card__icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 2v20M2 12h20"/>
+              <circle cx="12" cy="12" r="9"/>
+            </svg>
+            <div class="result-card__num" data-count="5000">0</div>
+            <h3 class="result-card__title">Один из 5000 в мире</h3>
+            <p class="result-card__text">
+              Глобальный тираж. Когда боксы кончатся — второй печати не будет. Номер закрепляется за вами навсегда.
+            </p>
+          </div>
+
+          <div class="result-card" data-reveal>
+            <svg class="result-card__icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M9 11l3 3L22 4"/>
+              <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+            </svg>
+            <div class="result-card__num">№</div>
+            <h3 class="result-card__title">Именной сертификат</h3>
+            <p class="result-card__text">
+              Документ с вашим именем и номером бокс-сета. Регистрируется в реестре Black Frost Records — открытом для коллекционеров и аукционных домов.
+            </p>
+          </div>
+
+          <div class="result-card" data-reveal>
+            <svg class="result-card__icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="7" width="20" height="13" rx="1"/>
+              <path d="M2 11h20M7 16h3"/>
+              <path d="M12 2l2 5h-4z"/>
+            </svg>
+            <div class="result-card__num">0 ₽</div>
+            <h3 class="result-card__title">Доставка по миру</h3>
+            <p class="result-card__text">
+              Бесплатная застрахованная доставка с трекингом до двери. По России — 5–10 дней, по миру — 14–21 день. Упаковка — ударопрочный двойной картон.
+            </p>
+          </div>
+
+          <div class="result-card" data-reveal>
+            <svg class="result-card__icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+            <div class="result-card__num">365</div>
+            <h3 class="result-card__title">Гарантия выкупа</h3>
+            <p class="result-card__text">
+              В течение года с даты получения мы выкупаем бокс обратно по полной цене 24 990 ₽ — если содержимое не вскрыто и сертификат сохранён.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SECTION 4 — CTA (CLAUDE.md §5.4)
+         ========================================================= -->
+    <section class="section section--cta" id="cta">
+      <div class="container">
+        <div class="cta-panel" data-reveal>
+
+          <div class="cta-panel__left">
+            <div class="cta-panel__eyebrow">Предзаказ открыт</div>
+            <h2 class="cta-panel__title">Закрепите свой номер<br>сейчас</h2>
+            <p class="cta-panel__text">
+              Номера присваиваются в порядке оплаты предзаказа. Чем раньше — тем ниже число на коробке.
+              После закрытия тиража боксы появятся только на аукционах вторичного рынка.
+            </p>
+
+            <ul class="cta-panel__bullets">
+              <li>Полная сумма 24 990 ₽ — оплата картой или СБП</li>
+              <li>Списание брони сразу, доставка после выпуска тиража</li>
+              <li>Гарантия выкупа лейблом в течение 365 дней</li>
+            </ul>
+          </div>
+
+          <div class="cta-panel__right">
+            <div class="cta-price">
+              <span class="cta-price__currency">₽</span>
+              <span class="cta-price__value">24&thinsp;990</span>
+            </div>
+            <div class="cta-stock">
+              осталось
+              <span class="cta-stock__num" id="stock-counter">3127</span>
+              из 5000
+            </div>
+            <div class="cta-stock-bar" aria-hidden="true">
+              <span class="cta-stock-bar__fill" id="stock-bar-fill"></span>
+            </div>
+            <a href="#form" class="btn btn-primary btn-lg btn-magnet" data-magnet>Забронировать сейчас</a>
+            <div class="cta-trust">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <span>Безопасная оплата · возврат 365 дней</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SECTION 5 — СОЦДОКАЗАТЕЛЬСТВА (CLAUDE.md §5.5)
+         ========================================================= -->
+    <section class="section section--press" id="press">
+      <div class="container">
+
+        <header class="section-head" data-reveal>
+          <div class="section-head__num">03</div>
+          <h2 class="section-head__title">Легенда, проверенная цифрами</h2>
+          <p class="section-head__lead">
+            «Appetite for Destruction» — самый продаваемый дебютный альбом в истории США.
+            Сорок лет спустя его всё ещё переиздают.
+          </p>
+        </header>
+
+        <div class="stats-grid" data-reveal>
+          <div class="stat">
+            <div class="stat__num"><span data-count="100">0</span><span>M+</span></div>
+            <div class="stat__label">копий продано<br>по миру</div>
+          </div>
+          <div class="stat">
+            <div class="stat__num"><span data-count="30">0</span><span>×</span></div>
+            <div class="stat__label">platinum<br>в США</div>
+          </div>
+          <div class="stat">
+            <div class="stat__num"><span data-count="1">0</span><span>st</span></div>
+            <div class="stat__label">в Billboard 200<br>в 1988</div>
+          </div>
+          <div class="stat">
+            <div class="stat__num"><span data-count="40">0</span></div>
+            <div class="stat__label">лет на сцене<br>и в чартах</div>
+          </div>
+        </div>
+
+        <!-- MARQUEE PRESS LOGOS -->
+        <div class="marquee" aria-label="Пресса о бокс-сете" data-reveal>
+          <div class="marquee__track">
+            <span class="marquee__item">Rolling Stone</span>
+            <span class="marquee__dot">·</span>
+            <span class="marquee__item">NME</span>
+            <span class="marquee__dot">·</span>
+            <span class="marquee__item">Kerrang!</span>
+            <span class="marquee__dot">·</span>
+            <span class="marquee__item">Billboard</span>
+            <span class="marquee__dot">·</span>
+            <span class="marquee__item">Mojo</span>
+            <span class="marquee__dot">·</span>
+            <span class="marquee__item">Pitchfork</span>
+            <span class="marquee__dot">·</span>
+            <span class="marquee__item">Classic Rock</span>
+            <span class="marquee__dot">·</span>
+            <!-- duplicate for seamless loop -->
+            <span class="marquee__item">Rolling Stone</span>
+            <span class="marquee__dot">·</span>
+            <span class="marquee__item">NME</span>
+            <span class="marquee__dot">·</span>
+            <span class="marquee__item">Kerrang!</span>
+            <span class="marquee__dot">·</span>
+            <span class="marquee__item">Billboard</span>
+            <span class="marquee__dot">·</span>
+            <span class="marquee__item">Mojo</span>
+            <span class="marquee__dot">·</span>
+            <span class="marquee__item">Pitchfork</span>
+            <span class="marquee__dot">·</span>
+            <span class="marquee__item">Classic Rock</span>
+            <span class="marquee__dot">·</span>
+          </div>
+        </div>
+
+        <!-- QUOTES -->
+        <div class="quotes">
+
+          <figure class="quote" data-reveal>
+            <blockquote>«Не альбом — заряженное оружие. Сорок лет спустя оно всё ещё стреляет.»</blockquote>
+            <figcaption>— Rolling Stone, рецензия на ремастер</figcaption>
+          </figure>
+
+          <figure class="quote" data-reveal>
+            <blockquote>«Лучшее издание Appetite со времён оригинала. Бокс, который коллекционеры будут гоняться через десять лет.»</blockquote>
+            <figcaption>— Mojo Magazine</figcaption>
+          </figure>
+
+          <figure class="quote" data-reveal>
+            <blockquote>«Прикоснулся NFC к телефону — пошёл неизданный дубль. У меня, чёрт возьми, мурашки.»</blockquote>
+            <figcaption>— Михаил К., коллекционер, Москва</figcaption>
+          </figure>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SECTION 6 — СОПУТСТВУЮЩЕЕ / FAQ + FORM (CLAUDE.md §5.6)
+         ========================================================= -->
+    <section class="section section--faq" id="faq">
+      <div class="container">
+
+        <header class="section-head" data-reveal>
+          <div class="section-head__num">04</div>
+          <h2 class="section-head__title">Частые вопросы</h2>
+          <p class="section-head__lead">Доставка, оплата, аутентичность. Если не нашли ответ — задайте в форме ниже.</p>
+        </header>
+
+        <div class="faq-list">
+
+          <details class="faq-item" data-reveal>
+            <summary class="faq-item__head">
+              <span class="faq-item__q">Когда придёт бокс после оплаты?</span>
+              <span class="faq-item__icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-item__body">
+              <p>Релиз тиража — 21 июля 2027. Сразу после релиза начинается логистика: по России — 5–10 рабочих дней, по миру — 14–21 день. Деньги списываются сейчас как бронь, и сразу закрепляется ваш номер.</p>
+            </div>
+          </details>
+
+          <details class="faq-item" data-reveal>
+            <summary class="faq-item__head">
+              <span class="faq-item__q">Какие способы оплаты?</span>
+              <span class="faq-item__icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-item__body">
+              <p>Российские карты Visa, Mastercard, МИР · СБП · Apple Pay · криптовалюта USDT (TRC-20). Эквайринг — ЮKassa. Чек по 54-ФЗ приходит на e-mail сразу после оплаты.</p>
+            </div>
+          </details>
+
+          <details class="faq-item" data-reveal>
+            <summary class="faq-item__head">
+              <span class="faq-item__q">Как подтверждается подлинность бокса?</span>
+              <span class="faq-item__icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-item__body">
+              <p>Три уровня: гербовая печать на сертификате, UV-маркировка, NFC-чип с криптографической подписью Black Frost Records. При перепродаже бокса новый владелец видит историю в реестре.</p>
+            </div>
+          </details>
+
+          <details class="faq-item" data-reveal>
+            <summary class="faq-item__head">
+              <span class="faq-item__q">Можно ли вернуть бокс, если он не понравится?</span>
+              <span class="faq-item__icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-item__body">
+              <p>Да. В течение 365 дней с даты доставки мы выкупаем бокс обратно по полной цене 24 990 ₽. Условия: содержимое не вскрыто, сертификат и пломба сохранены, бокс без повреждений.</p>
+            </div>
+          </details>
+
+          <details class="faq-item" data-reveal>
+            <summary class="faq-item__head">
+              <span class="faq-item__q">Будет ли второй тираж?</span>
+              <span class="faq-item__icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-item__body">
+              <p>Нет. Это закрытая серия 5000 экземпляров — таково условие лицензии от GN'R Estate. После закрытия предзаказа боксы появляются только на вторичном рынке, обычно с наценкой.</p>
+            </div>
+          </details>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================
+         FORM + CONTACTS
+         ========================================================= -->
+    <section class="section section--form" id="form">
+      <div class="container">
+
+        <div class="form-wrap" data-reveal>
+
+          <header class="section-head section-head--compact">
+            <div class="section-head__num">05</div>
+            <h2 class="section-head__title">Связь с куратором</h2>
+            <p class="section-head__lead">Оставьте контакты — наш менеджер коллекции свяжется в течение рабочего дня.</p>
+          </header>
+
+          <form class="form" id="contact-form" novalidate>
+
+            <div class="form__field">
+              <label for="f-name" class="form__label">Имя</label>
+              <input type="text" id="f-name" name="name" class="input" autocomplete="name" required>
+              <span class="form__error" data-error-for="f-name"></span>
+            </div>
+
+            <div class="form__field">
+              <label for="f-phone" class="form__label">Телефон</label>
+              <input type="tel" id="f-phone" name="phone" class="input" autocomplete="tel" placeholder="+7 ___ ___ __ __" required>
+              <span class="form__error" data-error-for="f-phone"></span>
+            </div>
+
+            <div class="form__field form__field--full">
+              <label for="f-msg" class="form__label">Сообщение (необязательно)</label>
+              <textarea id="f-msg" name="message" class="input input--textarea" rows="3"></textarea>
+            </div>
+
+            <div class="form__submit">
+              <button type="submit" class="btn btn-primary btn-magnet" data-magnet>Связаться со мной</button>
+              <span class="form__hint">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.</span>
+            </div>
+
+          </form>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================
+         FOOTER
+         ========================================================= -->
+    <footer class="site-footer">
+      <div class="container site-footer__row">
+
+        <div class="site-footer__brand">
+          <div class="logo-mark logo-mark--big">BF</div>
+          <div>
+            <div class="site-footer__name">Black Frost Records</div>
+            <div class="site-footer__tag">Limited Reissues · Est. 2018 · Moscow / Los Angeles</div>
+          </div>
+        </div>
+
+        <div class="site-footer__contacts">
+          <a href="mailto:hello@blackfrostrecords.ru">hello@blackfrostrecords.ru</a>
+          <a href="tel:+74950000000">+7 495 000-00-00</a>
+        </div>
+
+        <div class="site-footer__social" aria-label="Социальные сети">
+          <a href="#" class="social-ico" aria-label="Telegram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 4.5L2.5 12l6 2 2 7 4-5 5 4z"/></svg>
+          </a>
+          <a href="#" class="social-ico" aria-label="VKontakte">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h4l2 5 2-5h4M14 7l4 10M18 7l-4 10"/></svg>
+          </a>
+          <a href="#" class="social-ico" aria-label="YouTube">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="3"/><path d="M10 9l5 3-5 3z"/></svg>
+          </a>
+        </div>
+
+      </div>
+
+      <div class="container site-footer__bottom">
+        <span>© 2026 Black Frost Records · все логотипы и торговые марки принадлежат правообладателям</span>
+        <span>Учебный проект РЭУ им. Г.В. Плеханова · «Цифровые инструменты»</span>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- CDN: GSAP + ScrollTrigger + SplitText + Lenis + vanilla-tilt (FREE_STACK.md §3) -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js" defer></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" defer></script>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
