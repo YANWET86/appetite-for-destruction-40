@@ -2,7 +2,7 @@
 
 Учебный проект для РЭУ им. Г. В. Плеханова, дисциплина «Цифровые инструменты», практические работы №1 и №2. Юбилейный коллекционный бокс-сет к 40-летию альбома Guns N' Roses «Appetite for Destruction» от вымышленного лейбла Black Frost Records.
 
-**Адрес сайта:** https://yanwet86.github.io/appetite-for-destruction-40/ (после деплоя)
+**Live URL:** https://yanwet86.github.io/appetite-for-destruction-40/
 
 ---
 
