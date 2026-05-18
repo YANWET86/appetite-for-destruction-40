@@ -544,31 +544,121 @@ ul { margin: 0; padding: 0; list-style: none; }
   text-align: center;
 }
 
-.vinyl-stack {
+/* --- ALBUM COVER (Appetite for Destruction, 1987) с выезжающим винилом --- */
+.album-cover {
   position: relative;
   display: inline-block;
   max-width: 480px;
   width: 100%;
   aspect-ratio: 1;
-  background: var(--bg-card);
-  overflow: hidden;
-  box-shadow: var(--elev-3);
   transform-style: preserve-3d;
 }
 
-.vinyl-stack__img {
+/* Винил-диск — лежит ЗА обложкой, выезжает вправо при hover на родителя */
+.album-cover__vinyl {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  transform: translateX(0);
+  transition: transform 0.8s var(--ease-out);
+  will-change: transform;
+}
+
+.album-cover:hover .album-cover__vinyl {
+  transform: translateX(32%);
+}
+
+.album-cover__vinyl-disc {
+  width: 92%;
+  height: 92%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at center,
+      var(--accent-blood) 0 8%,
+      #1a0e08 9% 14%,
+      #0a0604 15% 100%
+    );
+  position: relative;
+  box-shadow:
+    inset 0 0 60px rgba(0, 0, 0, 0.9),
+    0 8px 24px var(--shadow-deep);
+  animation: vinylSpin 14s linear infinite;
+}
+
+/* Бороздки винила — концентрические круги */
+.album-cover__vinyl-disc::before {
+  content: "";
+  position: absolute;
+  inset: 6%;
+  border-radius: 50%;
+  background:
+    repeating-radial-gradient(
+      circle at center,
+      transparent 0,
+      transparent 2px,
+      rgba(201, 168, 106, 0.04) 2px,
+      rgba(201, 168, 106, 0.04) 3px
+    );
+}
+
+/* Центральный лейбл на виниле */
+.album-cover__vinyl-disc::after {
+  content: "GN'R";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30%;
+  height: 30%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: var(--accent-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(14px, 2vw, 22px);
+  color: var(--bg-deep);
+  letter-spacing: 0.05em;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes vinylSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Обложка-конверт поверх винила */
+.album-cover__sleeve {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-card);
+  box-shadow:
+    var(--elev-3),
+    0 0 0 1px rgba(201, 168, 106, 0.15) inset;
+  overflow: hidden;
+}
+
+.album-cover__img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(0.15) contrast(1.1) brightness(0.85);
+  display: block;
+  filter: contrast(1.05) brightness(1.02);
 }
 
-.vinyl-stack__sticker {
+/* Юбилейный значок 40 years — приклеен к углу */
+.album-cover__badge {
   position: absolute;
-  top: 24px;
-  right: 24px;
-  width: 96px;
-  height: 96px;
+  top: 18px;
+  right: 18px;
+  width: clamp(80px, 12vw, 110px);
+  height: clamp(80px, 12vw, 110px);
   border-radius: 50%;
   background: var(--accent-blood);
   display: flex;
@@ -577,23 +667,36 @@ ul { margin: 0; padding: 0; list-style: none; }
   justify-content: center;
   color: var(--ink);
   border: 2px solid var(--accent-gold);
-  box-shadow: var(--elev-2);
+  box-shadow: var(--elev-2), 0 0 24px rgba(184, 30, 30, 0.4);
+  z-index: 3;
+  transform: rotate(-8deg);
+  animation: badgePulse 3s var(--ease-in-out) infinite;
 }
 
-.vinyl-stack__sticker-line1 {
+.album-cover__badge-num {
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: 32px;
+  font-size: clamp(28px, 3.5vw, 38px);
   line-height: 1;
 }
 
-.vinyl-stack__sticker-line2 {
+.album-cover__badge-text {
   font-family: var(--font-accent);
-  font-size: 11px;
-  letter-spacing: 0.2em;
+  font-size: clamp(9px, 1vw, 12px);
+  letter-spacing: 0.25em;
   text-transform: uppercase;
-  margin-top: 2px;
+  margin-top: 4px;
 }
+
+@keyframes badgePulse {
+  0%, 100% { transform: rotate(-8deg) scale(1); }
+  50%      { transform: rotate(-8deg) scale(1.05); }
+}
+
+/* Сохраняем обратную совместимость старых классов (если где-то остались) */
+.vinyl-stack { position: relative; }
+.vinyl-stack__img { width: 100%; height: 100%; object-fit: cover; }
+.vinyl-stack__sticker { display: none; }
 
 .hero__caption {
   font-family: var(--font-accent);
