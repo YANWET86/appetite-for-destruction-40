@@ -133,6 +133,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .section {
   padding-block: clamp(96px, 12vw, 160px);
   position: relative;
+  overflow: hidden;
 }
 
 .section + .section { padding-top: clamp(96px, 12vw, 160px); }
@@ -391,16 +392,17 @@ ul { margin: 0; padding: 0; list-style: none; }
   padding-bottom: 80px;
   position: relative;
   overflow: hidden;
+  isolation: isolate;
 }
 
 .hero::before {
-  /* Vignette / спот света */
+  /* Vignette / спот света — поверх фотофона, под контентом */
   content: "";
   position: absolute;
   inset: 0;
   background: radial-gradient(ellipse at 30% 40%, rgba(201, 168, 106, 0.08), transparent 60%);
   pointer-events: none;
-  z-index: 0;
+  z-index: 1;
 }
 
 .hero__inner {
@@ -755,7 +757,11 @@ ul { margin: 0; padding: 0; list-style: none; }
 /* -------------------------------------------------------------------------
    11. CTA PANEL (Section 4)
    ------------------------------------------------------------------------- */
-.section--cta { background: var(--bg-card); }
+.section--cta {
+  background: var(--bg-card);
+  position: relative;
+  overflow: hidden;
+}
 
 .cta-panel {
   display: grid;
@@ -1317,3 +1323,284 @@ ul { margin: 0; padding: 0; list-style: none; }
   .product-card { transform: none !important; }
   .btn-magnet { transform: none !important; }
 }
+
+/* =========================================================================
+   19. ROCK-EXPLOSION DECORATORS — фоновые фото, штампы, граффити, polaroid'ы
+   ========================================================================= */
+
+/* --- Полноэкранный фон Hero --- */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.hero__bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(0.6) contrast(1.1) brightness(0.45) sepia(0.15);
+  transform: scale(1.05);
+}
+
+.hero__bg-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 50%, transparent 0%, var(--bg-deep) 75%),
+    linear-gradient(180deg, rgba(10, 6, 4, 0.7) 0%, rgba(10, 6, 4, 0.95) 100%);
+}
+
+/* Огромный штамп "40 / Years of Destruction" — псевдо-граффити поверх фона */
+.hero__bg-mark {
+  position: absolute;
+  z-index: 1;
+  right: -2vw;
+  top: 18vh;
+  font-family: var(--font-display);
+  font-weight: 900;
+  color: rgba(184, 30, 30, 0.12);
+  pointer-events: none;
+  line-height: 0.85;
+  letter-spacing: 0.02em;
+  text-align: right;
+  transform: rotate(-4deg);
+}
+
+.hero__bg-mark span {
+  display: block;
+  font-size: clamp(12rem, 28vw, 28rem);
+  color: rgba(184, 30, 30, 0.15);
+  text-shadow:
+    4px 4px 0 rgba(201, 168, 106, 0.05),
+    -4px -4px 0 rgba(184, 30, 30, 0.08);
+}
+
+.hero__bg-mark em {
+  font-family: var(--font-accent);
+  font-size: clamp(1rem, 1.8vw, 1.6rem);
+  font-style: normal;
+  color: var(--accent-gold-soft);
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  opacity: 0.5;
+  display: block;
+  margin-top: -1vw;
+}
+
+@media (max-width: 1023px) {
+  .hero__bg-mark { display: none; }
+}
+
+/* Hero inner становится поверх фона */
+.hero__inner { z-index: 2; }
+.hero__content { position: relative; z-index: 3; }
+.hero__visual  { position: relative; z-index: 2; }
+
+/* Усиление читаемости поверх фотофона */
+.hero__title {
+  text-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.8),
+    0 0 60px rgba(184, 30, 30, 0.2);
+}
+
+.hero__lead {
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7);
+}
+
+/* --- POLAROID-врезки --- */
+.polaroid {
+  position: absolute;
+  background: #f4ecdc;
+  padding: 10px 10px 36px;
+  box-shadow: var(--elev-3);
+  width: 140px;
+  z-index: 3;
+  transition: transform 0.6s var(--ease-out);
+}
+
+.polaroid img {
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(0.4) contrast(1.05);
+}
+
+.polaroid__cap {
+  font-family: var(--font-accent);
+  font-size: 11px;
+  color: #1a1208;
+  text-align: center;
+  margin-top: 6px;
+  letter-spacing: 0.05em;
+}
+
+.polaroid--top {
+  top: -20px;
+  left: -30px;
+  transform: rotate(-9deg);
+}
+
+.polaroid--bot {
+  bottom: 40px;
+  right: -24px;
+  transform: rotate(7deg);
+}
+
+.polaroid--top:hover { transform: rotate(-3deg) scale(1.05); }
+.polaroid--bot:hover { transform: rotate(2deg) scale(1.05); }
+
+@media (max-width: 1023px) {
+  .polaroid { display: none; }
+}
+
+/* --- STAMP "LIMITED 5000 ONLY" поверх hero-винила --- */
+.stamp {
+  position: absolute;
+  font-family: var(--font-accent);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-align: center;
+  padding: 14px 18px;
+  border: 3px double currentColor;
+  line-height: 1.2;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.stamp--limited {
+  top: 24px;
+  left: 24px;
+  color: var(--accent-blood);
+  transform: rotate(-12deg);
+  background: rgba(244, 236, 220, 0.05);
+}
+
+.stamp--limited::before,
+.stamp--limited::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border: 1px solid var(--accent-blood);
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* --- SECTION watermark — псевдо-граффити крупный текст --- */
+.section__watermark {
+  position: absolute;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(8rem, 20vw, 20rem);
+  color: rgba(201, 168, 106, 0.05);
+  line-height: 0.85;
+  letter-spacing: 0.02em;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  right: -4vw;
+  top: 8%;
+  transform: rotate(-3deg);
+  white-space: nowrap;
+}
+
+.section__watermark--left {
+  right: auto;
+  left: -2vw;
+  transform: rotate(3deg);
+  color: rgba(184, 30, 30, 0.06);
+}
+
+.section__watermark--right {
+  right: -2vw;
+  left: auto;
+  transform: rotate(-5deg);
+  color: rgba(184, 30, 30, 0.06);
+}
+
+.section .container { position: relative; z-index: 1; }
+
+/* --- SECTION фоновое фото --- */
+.section__bg-image {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.section__bg-image--right {
+  right: 0;
+  width: 45%;
+  mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.6) 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.6) 100%);
+}
+
+.section__bg-image--full {
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+.section__bg-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(0.7) contrast(1.1) brightness(0.35) sepia(0.1);
+}
+
+.section__bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,
+    var(--bg-card) 0%,
+    rgba(21, 16, 11, 0.8) 50%,
+    var(--bg-card) 100%);
+}
+
+/* CTA-блок теперь поверх фона */
+.section--cta .container { position: relative; z-index: 1; }
+
+/* --- DIAGONAL BLOOD SPLASH DIVIDER --- */
+.splash-divider {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background:
+    linear-gradient(176deg, var(--bg-deep) calc(50% - 1px), transparent 50%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.splash-divider::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 8%;
+  width: 60%;
+  height: 3px;
+  background: var(--accent-blood);
+  opacity: 0.6;
+  transform: rotate(-1.5deg);
+  box-shadow:
+    0 0 12px rgba(184, 30, 30, 0.5),
+    100px 14px 0 -1px var(--accent-gold-soft);
+}
+
+.splash-divider--reverse {
+  transform: scaleY(-1);
+  top: auto;
+  bottom: -1px;
+}
+
+/* --- Hero scroll indicator поверх всего --- */
+.hero__scroll { z-index: 4; }
+

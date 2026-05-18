@@ -66,6 +66,24 @@
          SECTION 1 — HERO (CLAUDE.md §5.1)
          ========================================================= -->
     <section class="hero" id="hero">
+
+      <!-- Полноэкранный фоновый слой: концертная сцена + затемнение -->
+      <div class="hero__bg" aria-hidden="true">
+        <img
+          src="https://images.unsplash.com/photo-1501612780327-45045538702b?w=2000&q=80&auto=format&fit=crop"
+          alt=""
+          class="hero__bg-img"
+          loading="eager"
+          fetchpriority="high">
+        <div class="hero__bg-overlay"></div>
+      </div>
+
+      <!-- Огромный фоновый «штамп» 40 — выжженный на постере -->
+      <div class="hero__bg-mark" aria-hidden="true">
+        <span>40</span>
+        <em>Years of Destruction</em>
+      </div>
+
       <div class="container hero__inner">
 
         <div class="hero__content">
@@ -116,6 +134,17 @@
         </div>
 
         <div class="hero__visual">
+
+          <!-- Polaroid-врезка: концерт 1987 -->
+          <div class="polaroid polaroid--top" aria-hidden="true">
+            <img
+              src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400&q=80&auto=format&fit=crop"
+              alt=""
+              loading="lazy">
+            <div class="polaroid__cap">Whisky a Go Go · 03.1987</div>
+          </div>
+
+          <!-- Главное фото — винил -->
           <div class="vinyl-stack" data-tilt-hero>
             <img
               src="https://images.unsplash.com/photo-1461360370896-922624d12aa1?w=900&q=85&auto=format&fit=crop"
@@ -127,7 +156,19 @@
               <span class="vinyl-stack__sticker-line1">40</span>
               <span class="vinyl-stack__sticker-line2">years</span>
             </div>
+            <!-- Стикер LIMITED поверх -->
+            <div class="stamp stamp--limited">Limited<br>5000 only</div>
           </div>
+
+          <!-- Polaroid-врезка: микрофон -->
+          <div class="polaroid polaroid--bot" aria-hidden="true">
+            <img
+              src="https://images.unsplash.com/photo-1485579149621-3123dd979885?w=400&q=80&auto=format&fit=crop"
+              alt=""
+              loading="lazy">
+            <div class="polaroid__cap">Studio · take 04</div>
+          </div>
+
           <div class="hero__caption">Photo: black vinyl, master tape transfer, 180g pressing</div>
         </div>
 
@@ -143,6 +184,18 @@
          SECTION 2 — РАССКАЗ О ПРОДУКТЕ (CLAUDE.md §5.2)
          ========================================================= -->
     <section class="section section--product" id="product">
+
+      <!-- Псевдо-граффити watermark -->
+      <div class="section__watermark" aria-hidden="true">BOX&nbsp;01</div>
+
+      <!-- Фоновое фото гитары справа -->
+      <div class="section__bg-image section__bg-image--right" aria-hidden="true">
+        <img
+          src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=900&q=80&auto=format&fit=crop"
+          alt=""
+          loading="lazy">
+      </div>
+
       <div class="container">
 
         <header class="section-head" data-reveal>
@@ -219,6 +272,13 @@
          SECTION 3 — РЕЗУЛЬТАТ / ВЫГОДЫ (CLAUDE.md §5.3)
          ========================================================= -->
     <section class="section section--result" id="result">
+
+      <!-- Diagonal blood splash divider -->
+      <div class="splash-divider" aria-hidden="true"></div>
+
+      <!-- Watermark — год оригинала -->
+      <div class="section__watermark section__watermark--left" aria-hidden="true">1987</div>
+
       <div class="container">
 
         <header class="section-head" data-reveal>
@@ -288,6 +348,16 @@
          SECTION 4 — CTA (CLAUDE.md §5.4)
          ========================================================= -->
     <section class="section section--cta" id="cta">
+
+      <!-- Фоновое фото — стена / атмосфера -->
+      <div class="section__bg-image section__bg-image--full" aria-hidden="true">
+        <img
+          src="https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=2000&q=80&auto=format&fit=crop"
+          alt=""
+          loading="lazy">
+        <div class="section__bg-overlay"></div>
+      </div>
+
       <div class="container">
         <div class="cta-panel" data-reveal>
 
@@ -334,6 +404,13 @@
          SECTION 5 — СОЦДОКАЗАТЕЛЬСТВА (CLAUDE.md §5.5)
          ========================================================= -->
     <section class="section section--press" id="press">
+
+      <!-- Diagonal blood splash divider -->
+      <div class="splash-divider splash-divider--reverse" aria-hidden="true"></div>
+
+      <!-- Псевдо-граффити "100M" -->
+      <div class="section__watermark section__watermark--right" aria-hidden="true">100M+</div>
+
       <div class="container">
 
         <header class="section-head" data-reveal>
