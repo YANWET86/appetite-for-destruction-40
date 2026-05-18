@@ -1557,10 +1557,21 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 .polaroid img {
   width: 100%;
-  height: 110px;
+  height: 160px;
   object-fit: cover;
+  object-position: center top;
   display: block;
   filter: grayscale(0.4) contrast(1.05);
+}
+
+/* У Axl лицо в верхней трети — кадрируем по верху */
+.polaroid--bot img {
+  object-position: center 15%;
+}
+
+/* У Slash лицо обычно в центре или чуть выше */
+.polaroid--top img {
+  object-position: center 25%;
 }
 
 .polaroid__cap {
