@@ -16,6 +16,7 @@
   function initPreloader() {
     const preloader = document.getElementById('preloader');
     const bar = preloader?.querySelector('.preloader__bar-fill');
+    const guitar = document.getElementById('preloader-guitar');
     const count = document.getElementById('preloader-count');
     if (!preloader) return;
 
@@ -26,11 +27,13 @@
     }
 
     const start = performance.now();
-    const duration = 1200;
+    const duration = 1600;
 
     function tick(now) {
       const progress = Math.min((now - start) / duration, 1);
-      if (bar) bar.style.width = (progress * 100).toFixed(1) + '%';
+      const pct = (progress * 100).toFixed(1);
+      if (bar) bar.style.width = pct + '%';
+      if (guitar) guitar.style.left = pct + '%';
       if (count) count.textContent = String(Math.floor(progress * 100)).padStart(3, '0');
       if (progress < 1) {
         requestAnimationFrame(tick);
