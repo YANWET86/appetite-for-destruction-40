@@ -26,22 +26,18 @@
 - **Где используется:** `index.html` → `.album-cover__img`
 - **Анимация:** При наведении на обложку из-за неё выезжает крутящийся винил-диск (CSS keyframes vinylSpin).
 
-### 1.3 Hero polaroid слева — Slash
-- **Файл:** `Slash_2009.jpg`
-- **URL:** https://upload.wikimedia.org/wikipedia/commons/9/94/Slash_2009.jpg
-- **Источник:** Wikimedia Commons
-- **Описание:** Slash, 2009 год. Близко к классическому облику (цилиндр, кудри, очки).
-- **Автор:** Glenn Francis (Toglenn, www.PacificProDigital.com)
-- **Лицензия:** **CC-BY-SA 3.0 Unported** (+ GFDL 1.2)
+### 1.3 Hero polaroid слева — Slash (локальный файл)
+- **Локальный путь:** `assets/images/Slash_live_in_London_2022_(Cropped_-_upright).jpg`
+- **Размер:** 279 КБ
+- **Описание:** Slash на сцене в Лондоне, 2022 год.
+- **Первичный источник:** Wikimedia Commons, фото Kreepin Deth, CC-BY-SA 4.0
 - **Где используется:** `index.html` → `.polaroid--top`
 
-### 1.4 Hero polaroid справа — Axl Rose молодой
-- **Файл:** `Axl_Rose_at_Yarkon_Park_in_Tel_Aviv,_Israel_--_May_1993.jpg`
-- **URL:** https://upload.wikimedia.org/wikipedia/commons/7/70/Axl_Rose_at_Yarkon_Park_in_Tel_Aviv%2C_Israel_--_May_1993.jpg
-- **Источник:** Wikimedia Commons
-- **Описание:** Axl Rose на сцене в Tel Aviv (Yarkon Park), май 1993 года. Эпоха Use Your Illusion Tour.
-- **Автор:** Alibaba (Hebrew Wikipedia uploader)
-- **Лицензия:** **CC-BY-SA 3.0 Unported** (+ GFDL 1.2)
+### 1.4 Hero polaroid справа — Axl Rose (локальный файл)
+- **Локальный путь:** `assets/images/axl_rose.png`
+- **Размер:** 98 КБ
+- **Описание:** Портретное фото Axl Rose, загружено автором проекта.
+- **Источник:** добавлен вручную в `assets/images/` пользователем.
 - **Где используется:** `index.html` → `.polaroid--bot`
 
 ### 1.5 Product-секция — фоновое фото справа (Slash)
