@@ -11,42 +11,6 @@
   const IS_TOUCH = window.matchMedia('(hover: none)').matches;
 
   /* -----------------------------------------------------------------------
-     0. PRELOADER — 1.2 sec film burn-in (CLAUDE.md §6.1, DESIGN.md §9)
-     ----------------------------------------------------------------------- */
-  function initPreloader() {
-    const preloader = document.getElementById('preloader');
-    const bar = preloader?.querySelector('.preloader__bar-fill');
-    const guitar = document.getElementById('preloader-guitar');
-    const count = document.getElementById('preloader-count');
-    if (!preloader) return;
-
-    if (PREFERS_REDUCED) {
-      preloader.classList.add('is-hidden');
-      setTimeout(() => preloader.remove(), 50);
-      return;
-    }
-
-    const start = performance.now();
-    const duration = 1600;
-
-    function tick(now) {
-      const progress = Math.min((now - start) / duration, 1);
-      const pct = (progress * 100).toFixed(1);
-      if (bar) bar.style.width = pct + '%';
-      if (guitar) guitar.style.left = pct + '%';
-      if (count) count.textContent = String(Math.floor(progress * 100)).padStart(3, '0');
-      if (progress < 1) {
-        requestAnimationFrame(tick);
-      } else {
-        preloader.classList.add('is-hidden');
-        setTimeout(() => preloader.remove(), 700);
-        document.dispatchEvent(new CustomEvent('preloader:done'));
-      }
-    }
-    requestAnimationFrame(tick);
-  }
-
-  /* -----------------------------------------------------------------------
      1. LENIS — smooth scroll (FREE_STACK.md §3.2)
      ----------------------------------------------------------------------- */
   let lenisInstance = null;
@@ -485,14 +449,7 @@
     initTypewriter();
   }
 
-  // Прелоадер запускается сразу
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initPreloader);
-  } else {
-    initPreloader();
-  }
-
-  // Остальное — после загрузки всех скриптов и шрифтов
+  // Запуск после загрузки всех скриптов и шрифтов
   window.addEventListener('load', () => {
     // Небольшая задержка, чтобы defer-скрипты CDN точно подгрузились
     setTimeout(boot, 50);
