@@ -38,8 +38,9 @@
       return;
     }
 
-    // Якорные ссылки через Lenis
+    // Якорные ссылки через Lenis (пропускаем ссылки с data-pdn-open — у них свой обработчик)
     document.querySelectorAll('a[href^="#"]').forEach(link => {
+      if (link.hasAttribute('data-pdn-open')) return;
       link.addEventListener('click', (e) => {
         const target = link.getAttribute('href');
         if (target === '#' || target.length < 2) return;
@@ -427,12 +428,10 @@
     const modal = document.getElementById('pdn');
     if (!modal) return;
 
-    const triggers = document.querySelectorAll('[data-pdn-open]');
-    const closers = modal.querySelectorAll('[data-pdn-close]');
     let lastFocus = null;
 
     function open(e) {
-      if (e) e.preventDefault();
+      if (e) { e.preventDefault(); e.stopPropagation(); }
       lastFocus = document.activeElement;
       modal.classList.add('is-open');
       modal.setAttribute('aria-hidden', 'false');
@@ -452,8 +451,13 @@
       }
     }
 
-    triggers.forEach(t => t.addEventListener('click', open));
-    closers.forEach(c => c.addEventListener('click', close));
+    // Делегирование на document с capture=true — перехватываем клик ДО всех других обработчиков (Lenis и т.п.)
+    document.addEventListener('click', (e) => {
+      const opener = e.target.closest('[data-pdn-open]');
+      if (opener) { open(e); return; }
+      const closer = e.target.closest('[data-pdn-close]');
+      if (closer && modal.contains(closer)) { e.preventDefault(); close(); }
+    }, true);
 
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
