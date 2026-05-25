@@ -1310,6 +1310,151 @@ ul { margin: 0; padding: 0; list-style: none; }
   letter-spacing: 0.05em;
 }
 
+.form__hint-link {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: rgba(201, 168, 106, 0.45);
+  text-underline-offset: 3px;
+  transition: color 0.25s ease, text-decoration-color 0.25s ease;
+}
+.form__hint-link:hover,
+.form__hint-link:focus-visible {
+  color: var(--accent-gold);
+  text-decoration-color: var(--accent-gold);
+}
+
+/* -------------------------------------------------------------------------
+   14.1 PDN MODAL (согласие на обработку персональных данных)
+   ------------------------------------------------------------------------- */
+.pdn-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 4vw, 48px);
+}
+.pdn-modal.is-open {
+  display: flex;
+}
+.pdn-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 3, 2, 0.78);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  animation: pdnFade 0.25s ease both;
+}
+.pdn-modal__dialog {
+  position: relative;
+  width: min(720px, 100%);
+  max-height: calc(100vh - clamp(32px, 8vw, 96px));
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+  padding: clamp(24px, 4vw, 44px);
+  animation: pdnRise 0.32s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.pdn-modal__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--ink-muted);
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+.pdn-modal__close:hover,
+.pdn-modal__close:focus-visible {
+  color: var(--accent-gold);
+  border-color: var(--border-subtle);
+  transform: rotate(90deg);
+}
+.pdn-modal__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  margin: 0 0 6px;
+  padding-right: 48px;
+}
+.pdn-modal__meta {
+  font-family: var(--font-accent);
+  font-size: var(--fs-xs);
+  color: var(--ink-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0 0 var(--space-3);
+}
+.pdn-modal__body {
+  overflow-y: auto;
+  padding-right: 8px;
+  color: var(--ink);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-gold) transparent;
+}
+.pdn-modal__body::-webkit-scrollbar { width: 6px; }
+.pdn-modal__body::-webkit-scrollbar-thumb {
+  background: rgba(201, 168, 106, 0.45);
+}
+.pdn-modal__body p { margin: 0 0 1em; }
+.pdn-modal__body h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.05em;
+  color: var(--accent-gold);
+  margin: 1.4em 0 0.5em;
+}
+.pdn-modal__body ul {
+  margin: 0 0 1em;
+  padding-left: 1.2em;
+}
+.pdn-modal__body li { margin-bottom: 0.35em; }
+.pdn-modal__body a {
+  color: var(--accent-gold);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.pdn-modal__footer {
+  margin-top: var(--space-3);
+  display: flex;
+  justify-content: flex-end;
+}
+
+@keyframes pdnFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes pdnRise {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+body.pdn-open {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pdn-modal__backdrop,
+  .pdn-modal__dialog {
+    animation: none;
+  }
+  .pdn-modal__close { transition: none; }
+}
+
 @keyframes shake {
   0%, 100% { transform: translateX(0); }
   20%      { transform: translateX(-8px); }

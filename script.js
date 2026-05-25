@@ -421,6 +421,49 @@
   }
 
   /* -----------------------------------------------------------------------
+     PDN MODAL — согласие на обработку персональных данных
+     ----------------------------------------------------------------------- */
+  function initPdnModal() {
+    const modal = document.getElementById('pdn');
+    if (!modal) return;
+
+    const triggers = document.querySelectorAll('[data-pdn-open]');
+    const closers = modal.querySelectorAll('[data-pdn-close]');
+    let lastFocus = null;
+
+    function open(e) {
+      if (e) e.preventDefault();
+      lastFocus = document.activeElement;
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('pdn-open');
+      if (lenisInstance && typeof lenisInstance.stop === 'function') lenisInstance.stop();
+      const closeBtn = modal.querySelector('.pdn-modal__close');
+      if (closeBtn) closeBtn.focus({ preventScroll: true });
+    }
+
+    function close() {
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('pdn-open');
+      if (lenisInstance && typeof lenisInstance.start === 'function') lenisInstance.start();
+      if (lastFocus && typeof lastFocus.focus === 'function') {
+        lastFocus.focus({ preventScroll: true });
+      }
+    }
+
+    triggers.forEach(t => t.addEventListener('click', open));
+    closers.forEach(c => c.addEventListener('click', close));
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+    });
+
+    // Если пользователь зашёл напрямую по #pdn — открыть модалку
+    if (window.location.hash === '#pdn') open();
+  }
+
+  /* -----------------------------------------------------------------------
      INIT
      ----------------------------------------------------------------------- */
   function boot() {
@@ -447,6 +490,7 @@
     initFaq();
     initForm();
     initTypewriter();
+    initPdnModal();
   }
 
   // Запуск после загрузки всех скриптов и шрифтов
